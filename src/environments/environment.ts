@@ -4,17 +4,6 @@
 
 export const environment = {
   production: false,
-  /* 
-  Conecion de Firestore de Diego
-    firebaseconfig:{
-    apiKey: "AIzaSyCSfz8IFPTH3ZC_a4xp_Z7_OmdVWVBvaSA",
-    authDomain: "veterinariac-tec.firebaseapp.com",
-    projectId: "veterinariac-tec",
-    storageBucket: "veterinariac-tec.appspot.com",
-    messagingSenderId: "519942315",
-    appId: "1:519942315:web:26de3d6366d117079887ee"
-  }
-  */
   firebaseconfig:{
     apiKey: "AIzaSyAbuu0duFxHvhVI9pOyQr0klE4uB-3d2uA",
     authDomain: "dahveterinaria.firebaseapp.com",
@@ -37,3 +26,15 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+  /* 
+  Conecion de Firestore de Diego
+    firebaseconfig:{
+    apiKey: "AIzaSyCSfz8IFPTH3ZC_a4xp_Z7_OmdVWVBvaSA",
+    authDomain: "veterinariac-tec.firebaseapp.com",
+    projectId: "veterinariac-tec",
+    storageBucket: "veterinariac-tec.appspot.com",
+    messagingSenderId: "519942315",
+    appId: "1:519942315:web:26de3d6366d117079887ee"
+  }
+  */
