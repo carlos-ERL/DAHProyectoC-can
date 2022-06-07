@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar class="ion-color" [style.background-color]="'#985F6F'" >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis citas</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header> Mis citas publicadas </ion-list-header>
+
+    <ion-item *ngFor="let quote of myQuotes"   class="borderedStyle">
+      <ion-avatar slot="start" style="width: 5pc; height:5pc;">
+        <img src="{{quote.photo}}" />
+      </ion-avatar>
+      <ion-label> 
+        <h1>{{quote.petName}}</h1>
+        <h3> <strong>Estado:</strong> <ion-chip color="warning"><ion-label>{{quote.status}}</ion-label></ion-chip></h3> 
+       
+        <p> <strong>Descripción:</strong>  {{quote.description}}</p>
+      </ion-label>
+    </ion-item>
+
+    
+  </ion-list>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="inicio">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+ 
+    <ion-tab-button tab="calendario">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-label>Calendario</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="show"  tab="tips">
+      <ion-icon name="bulb-outline"></ion-icon>
+      <ion-label>Tips</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>

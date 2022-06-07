@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar class="ion-color" [style.background-color]="'#985F6F'" >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Vacunas de mi mascota</ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-justify-content-center ion-text-center">
+    <ion-label class="centeredText">Vacunas registradas</ion-label>
+  </ion-row>
+
+  <ion-list>
+    <ion-item *ngFor="let quote of myVaccinations"  class="borderedStyle">
+        <ion-label>
+          <h3> <strong>Fecha:</strong> <ion-chip color="sucess"><ion-label>{{quote.date}}</ion-label></ion-chip></h3> 
+          <p> <strong>Mascota:</strong>  {{quote.petname}}</p>
+          <p> <strong>Observaciones:</strong>  {{quote.observations}}</p>
+          <p></p>
+        </ion-label>
+    </ion-item>
+
+    
+  </ion-list>
+</ion-content>

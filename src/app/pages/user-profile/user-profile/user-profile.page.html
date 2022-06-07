@@ -1,0 +1,60 @@
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="chevron-down-circle-outline"
+          pullingText="Jale para actualizar"
+          refreshingSpinner="circles"
+          refreshingText="Recargando...">
+        </ion-refresher-content>
+      </ion-refresher>
+
+      <ion-row class="gradientBack ion-justify-content-center">
+        <ion-card style="width: 100%; margin-top: 100px; border-radius: 15px;">
+            <p></p>
+            <ion-row id="profile-background">
+                <img src="{{user.photo}}" alt="Photo" class="avatar" />
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+                <h3> <strong>¡Bienvenido {{user.name}}!</strong> </h3>
+            </ion-row>
+    
+            <p></p>
+    
+            <ion-item-divider>
+                <ion-label>Datos personales</ion-label>
+            </ion-item-divider>
+            <ion-item>
+            <ion-icon name="remove-outline"></ion-icon>
+            <ion-col>
+                <ion-label class="title">Nombre(s)</ion-label> 
+                <ion-label>{{user.lastname}}</ion-label>
+            </ion-col>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="person"></ion-icon>
+                <ion-col>
+                    <ion-label class="title">Apellidos</ion-label>
+                    <ion-label>{{user.name}}</ion-label>
+                </ion-col>
+            </ion-item>
+        
+            <ion-item>
+                <ion-icon name="at"></ion-icon>
+                <ion-col>
+                    <ion-label class="title">Correo elctrónico</ion-label>
+                    <ion-label>{{user.email}}</ion-label>
+                </ion-col>
+            </ion-item>
+            <section>
+            <ion-button (click)="goToVaccination()" *ngIf="vacinationVisible"  class="ion-color buttonStyle" [style.background-color]="'#e6e3ee'" expand="block"><ion-icon name="bandage-outline"></ion-icon>Vacunas de mi mascota</ion-button>
+            <ion-button (click)="goToUpdate()" class="ion-color buttonStyle" [style.background-color]="'#e6e3ee'" expand="block"> <ion-icon name="pencil-outline"></ion-icon>Actualizar mi perfil</ion-button>
+            <ion-button (click)="logOut()"class="ion-color buttonStyle" [style.background-color]="'#4E4C67'" expand="block">Cerrar sesión <ion-icon name="log-out-outline"></ion-icon></ion-button>
+            </section>
+    
+        </ion-card>           
+
+    </ion-row>
+
+
+</ion-content>

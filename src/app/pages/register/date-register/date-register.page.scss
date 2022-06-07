@@ -1,0 +1,42 @@
+.avatar {
+    height: 5pc;
+    width: 5pc;
+    /* los siguientes valores son independientes del tamaño del círculo */
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+    border: 5px solid #555;
+    object-fit: cover;
+}
+
+.star {
+    color: #9bbb59;
+}
+
+.title {
+    color: #555;
+}
+
+#profile-background {
+    justify-content: center;
+}
+
+ion-icon {
+    padding-right: 1pc;
+}
+
+ion-item {
+    --padding-start: 1pc;
+}
+.gradientBack {
+    background: linear-gradient(#4E4C67, #A6B1E1);
+    height: 200px;
+    z-index: 0;
+  }
+  .buttonStyle {
+    border-radius: 25px;
+    height: 50px;
+    margin-top: 15px;
+    color: #9a6373;
+  }

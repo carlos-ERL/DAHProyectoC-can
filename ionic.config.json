@@ -1,0 +1,8 @@
+{
+  "name": "Veterinaria",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

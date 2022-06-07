@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar class="ion-color" [style.background-color]="'#985F6F'" >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> 
+    <ion-title>Todas las citas</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list> 
+    <ion-item *ngFor="let quote of myQuotes" class="borderedStyle">
+      <ion-avatar slot="start" style="width: 3pc; height:3pc;">
+        <img src="{{quote.photo}}" />
+      </ion-avatar>
+      <ion-label>
+      
+        <h1>{{quote.petName}}</h1>
+        <h2>
+          <strong>Fecha:</strong> 
+           <ion-chip color="success">
+            <ion-icon name="calendar"></ion-icon>
+             <ion-label>{{quote.dateQuote}}</ion-label>
+            </ion-chip>
+          </h2> 
+        <h3> <strong>Estado:</strong> <ion-chip color="success"><ion-label>{{quote.status}}</ion-label></ion-chip></h3> 
+       
+        <p> <strong>Descripción:</strong>  {{quote.description}}</p>
+        
+      </ion-label>
+    </ion-item>
+
+    
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-button class="ion-color buttonStyle" [style.background-color]="'#985F6F'"  expand="block" (click)="goToScanner()">Actualizar el status de una cita</ion-button>
+</ion-footer>

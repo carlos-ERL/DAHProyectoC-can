@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar class="ion-color" [style.background-color]="'#985F6F'" >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Actualizar mi perfil</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-col >
+  <form [formGroup]="myForm">
+    <ion-item class="borderedInput">
+      <ion-label position="floating">Nombre <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item class="borderedInput">
+      <ion-label position="floating">Apellidos <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="lastname" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="borderedInput">
+        <ion-label position="floating">Foto de perfil (Link) <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required formControlName="photo" type="text"></ion-input>            
+    </ion-item>
+
+    <ion-item class="borderedInput">
+      <ion-label position="floating">Correo Electrónico <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="email" type="text"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" [disabled]="myForm.invalid" class="ion-color buttonStyle" [style.background-color]="'#985F6F'"  expand="block" (click)="updateUser()">
+      Actualizar
+    </ion-button>
+
+  </form>
+</ion-col>
+    
+</ion-content>

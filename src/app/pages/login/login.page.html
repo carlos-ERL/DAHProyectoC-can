@@ -1,0 +1,66 @@
+<ion-header [translucent]="true"> </ion-header>
+
+<ion-content [fullscreen]="true" >
+    <ion-grid fixed>
+            <ion-row class="gradientBack ion-justify-content-center">
+                <ion-row class="ion-justify-content-center" style="z-index: 10;margin-top: 65px;">
+                    <img src="../../../assets/LogoVeterinaria.png" id="img-logo" />
+                </ion-row>
+            </ion-row>
+
+      
+        <form [formGroup]="Sesion" style="margin-top: 75px;">
+            <ion-card color="red">
+                <ion-row class="ion-justify-content-center">
+                    <ion-label class="primaryText">Inicie sesión con su cuenta</ion-label>
+                </ion-row>
+                <ion-row>
+                    <ion-col size-lg="12">
+                      <ion-item class="input">
+                        <ion-label position="floating">Correo  Electronico</ion-label>
+                        <ion-input type="text" formControlName="email"  class="input"></ion-input>
+                      </ion-item>    
+                      <div>
+                        <ng-container *ngFor="let val of validateMessages['email']">
+                          <div class="errormessage" *ngIf="Sesion.get('email').hasError(val.type) && (Sesion.get('password').dirty || Sesion.get('password').touched)" >
+                            {{val.message}}
+                          </div>
+                        </ng-container>
+                      </div>           
+                    </ion-col>
+                </ion-row>
+
+                <p></p>
+
+                <ion-row >
+                    <ion-col size-lg="12">
+                      <ion-item class="input">
+                        <ion-label position="floating">Ingrese aquí su contraseña </ion-label>
+                        <ion-input type="password" formControlName="password"></ion-input>
+                      </ion-item>    
+                      <div>
+                        <ng-container *ngFor="let val of validateMessages['password']">
+                          <div class="errormessage" *ngIf="Sesion.get('password').hasError(val.type) && (Sesion.get('password').dirty || Sesion.get('password').touched)" >
+                            {{val.message}}
+                          </div>
+                        </ng-container>
+                      </div>           
+                    </ion-col>
+                </ion-row>
+
+                <p></p>
+
+                <ion-button class="ion-color buttonStyle" [style.background-color]="'#985F6F'"  expand="block" (click)="login()">Iniciar sesión</ion-button>
+                <p></p>
+                <ion-button class="ion-color buttonStyle registerText" [style.background-color]="'#ffff'" expand="block"  (click)="toRegister()">Registrarse</ion-button>
+                <p></p>
+                
+
+                <p></p>
+                <ion-row class="ion-justify-content-center">
+                    <a  (click)="goToRestore()">Olvidé mi Contraseña</a>
+                </ion-row>
+            </ion-card>
+        </form>
+    </ion-grid>
+</ion-content>

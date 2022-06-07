@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar class="ion-color" [style.background-color]="'#985F6F'" >
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Citas en espera</ion-title>
+    </ion-toolbar>
+  
+  </ion-header>
+
+<ion-content>
+  <ion-list >
+    <ion-card *ngFor="let quote of quotes"  >
+        <img src="{{quote.photo}}" alt=" " srcset="" />
+        <ion-card-header>
+            <ion-card-subtitle>
+                <strong>Fecha de publicación: </strong> 
+                <ion-row>
+                    <ion-chip color="danger"> 
+                        <ion-icon name="calendar"></ion-icon>
+                        <ion-label> {{quote.creationDateQuote}}</ion-label>
+                    </ion-chip>
+                </ion-row>
+            </ion-card-subtitle>
+            <ion-card-title>{{quote.petName}}
+            </ion-card-title>
+            <p></p>
+            <ion-row class="ion-align-items-center">
+                <ion-row>
+                    <strong>Sobre la mascota:</strong> 
+                </ion-row>
+                <ion-row>
+                    <ion-chip color="tertiary">
+                        <ion-label>Peso: {{quote.weight}} kg</ion-label>
+                    </ion-chip>
+                    <ion-chip color="secondary">
+                        <ion-label>Tamaño: {{quote.size}} cm</ion-label>
+                    </ion-chip> 
+                </ion-row>
+                <ion-row>
+                   <strong>Petición: </strong>  <ion-label>{{quote.description}} </ion-label>
+              
+                </ion-row>
+                
+            </ion-row>
+        </ion-card-header> 
+
+        <ion-card-content>
+            <ion-row class="ion-justify-content-center">
+                <ion-button expand="block " color="primary" *disabled="quote.responsable != ''" id="about-button" (click)="toDateSchedule(quote)">
+                    <ion-label>AGENDAR CITA</ion-label>
+                </ion-button>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+</ion-list>
+</ion-content>
