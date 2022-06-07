@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Quote } from 'src/app/models/quote';
-import { DateService } from 'src/app/services/date.service';
-import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { DateService } from 'src/app/services/date.service'; 
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner';
+import { AlertsServiceService } from 'src/app/services/alerts-service.service';
 ;
 
 @Component({
@@ -13,9 +14,12 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 export class MyVeterinarianQuotesPage implements OnInit {
   myQuotes=[];
   veterinarianId; 
-  constructor(private quoteService:DateService,private activatedRoute: ActivatedRoute,private barcodeScanner: BarcodeScanner) { }
+  constructor(private quoteService:DateService,private activatedRoute: ActivatedRoute,private alertas:AlertsServiceService,) { }
 
   ngOnInit() {
+    this.getList()
+  }
+  getList(){
     this.quoteService
     .getQuotes()
     .subscribe(async (data) => {
@@ -36,16 +40,18 @@ export class MyVeterinarianQuotesPage implements OnInit {
           responsable:quote.payload.doc.get('responsable')
         }as Quote);
       });
-
-     
     });
   }
-  goToScanner(){
-    this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
-     }).catch(err => {
-         console.log('Error', err);
-     });
+  async goToScanner(){
+    const data = await BarcodeScanner.scan();
+    this.alertas.presentToast(`Contenido del QR: ${data.text}`)
+  }
+  cancelQuote(quote){
+    this.quoteService.cancelQuote(quote.id)
+    .then(res => {
+      this.alertas.presentToast('Fecha establecida correctamente')
+      this.getList()
+    }).catch(error => console.log(error))
   }
 
 

@@ -37,10 +37,14 @@ export class WaitlistPage implements OnInit {
          
    });
   }
-
+ 
 
   ngOnInit() {
 
+  }
+  ngOnDestroy() {
+    this.quotes=[];
+    this.dateFormated
   }
 
   async toDateSchedule(quote){

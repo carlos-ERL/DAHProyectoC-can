@@ -9,6 +9,8 @@ import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { Storage } from '@capacitor/storage';
 import { AlertsServiceService } from 'src/app/services/alerts-service.service';
 
+
+
 @Component({
   selector: 'app-date-register',
   templateUrl: './date-register.page.html',
@@ -17,9 +19,27 @@ import { AlertsServiceService } from 'src/app/services/alerts-service.service';
 export class DateRegisterPage implements OnInit {
   public myForm:FormGroup;
   public quote:Quote;
-  public currentDate=new Date();
+  public currentDate=new Date(); 
   public user:User;
-  public URLimg
+  URLimg:string = "";
+  cameraOptions: CameraOptions = {
+    quality:100,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    sourceType: this.camera.PictureSourceType.CAMERA,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+  galleryOptions: CameraOptions = {
+    quality:50,
+    allowEdit:true,
+    correctOrientation:true,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+  photo:any = '';
+
   constructor(
     private dateService:DateService, 
     private fb:FormBuilder,
@@ -47,32 +67,30 @@ export class DateRegisterPage implements OnInit {
     });
   }
   openFromCamera(){
-    this.camera.getPicture({
-      sourceType: this.camera.PictureSourceType.CAMERA,
-      destinationType: this.camera.DestinationType.FILE_URI
-  }).then((res) => {
-      this.myForm.setValue({
-        photo:res,
-        });
-        this.URLimg = res;
-      console.log(res)
-    }).catch(error =>{
-      console.log(error)
-    })
+  this.camera.getPicture(this.cameraOptions).then((imageData) => {     
+     this.myForm.setValue({
+      photo:imageData,
+      });
+      this.URLimg = imageData; 
+      this.alertas.presentToast(this.URLimg);
+      this.photo= imageData;
+      this.alertas.presentToast(this.photo);
+    }, (err) => {
+     // Handle error
+    });
   }
   openFromGallery(){
-    this.camera.getPicture({
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: this.camera.DestinationType.DATA_URL
-    }).then((res) => {
-      this.myForm.setValue({
-        photo:res,
-        });
-        this.URLimg = 'data:image/jpeg;base64,'+res;
-      console.log(res)
-    }).catch(error =>{
-      console.log(error)
-    })
+  this.camera.getPicture(this.galleryOptions).then((imageData) => {
+     let base64Image = 'data:image/jpeg;base64,' + imageData;
+     this.myForm.setValue({
+      photo:imageData,
+      });
+      this.URLimg = base64Image; 
+      this.photo= imageData;
+
+    }, (err) => {
+     // Handle error
+    });
   }
   async createDate(){
     this.currentDate=new Date();

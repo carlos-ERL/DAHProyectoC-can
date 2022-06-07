@@ -26,6 +26,11 @@ export class DateService {
     .doc('/quotes/' + id)
     .update({ dateQuote: date,status:'Agendada',idDoctor:idDoctor});
   }
+  cancelQuote(id){
+    return this.firestore
+    .doc('/quotes/' + id)
+    .update({ status: 'Cancelada'});
+  }
   asignResponsable(id,responsable){
     return this.firestore
     .doc('/quotes/' + id)

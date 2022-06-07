@@ -43,11 +43,11 @@
                 </ion-row>
                 
             </ion-row>
-        </ion-card-header> 
-
+        </ion-card-header>  
+ 
         <ion-card-content>
             <ion-row class="ion-justify-content-center">
-                <ion-button expand="block " color="primary" *disabled="quote.responsable != ''" id="about-button" (click)="toDateSchedule(quote)">
+                <ion-button expand="block " color="primary" *ngIf="quote.responsable == ''"  id="about-button" (click)="toDateSchedule(quote)">
                     <ion-label>AGENDAR CITA</ion-label>
                 </ion-button>
             </ion-row>

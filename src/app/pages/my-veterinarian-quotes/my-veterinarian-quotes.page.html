@@ -29,8 +29,12 @@
         <p> <strong>Descripción:</strong>  {{quote.description}}</p>
         
       </ion-label>
+      <ion-row class="ion-justify-content-center">
+        <ion-button expand="block " color="danger" *ngIf="quote.status == 'Agendada'"  id="about-button"  (click)="cancelQuote(quote)">
+            <ion-label>Cancelar Cita</ion-label>
+        </ion-button>
+    </ion-row>
     </ion-item>
-
     
   </ion-list>
 </ion-content>
